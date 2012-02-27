@@ -9,3 +9,5 @@ dist
 doc/build
 *.egg*
 README.pdf
+*.pid
+*.log

@@ -33,3 +33,7 @@ base_config.renderers.append('mako')
 base_config.use_sqlalchemy = True
 base_config.model = busmon.model
 base_config.DBSession = busmon.model.DBSession
+
+
+base_config.use_toscawidgets=False
+base_config.use_toscawidgets2=True

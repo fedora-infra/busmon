@@ -8,6 +8,10 @@ from busmon.model import DBSession, metadata
 from busmon.lib.base import BaseController
 from busmon.controllers.error import ErrorController
 
+from busmon.widgets import (
+    TopicsBarChart,
+)
+
 __all__ = ['RootController']
 
 
@@ -31,7 +35,7 @@ class RootController(BaseController):
     @expose('busmon.templates.index')
     def index(self):
         """Handle the front-page."""
-        return dict(page='index')
+        return dict(widget=TopicsBarChart)
 
     @expose('busmon.templates.about')
     def about(self):

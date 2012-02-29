@@ -13,6 +13,7 @@
   ${self.content_wrapper()}
   ${self.footer()}
 </body>
+${tmpl_context.moksha_socket.display() | n}
 
 <%def name="content_wrapper()">
     <div id="content">

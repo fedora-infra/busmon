@@ -29,6 +29,7 @@ install_requires=[
     "repoze.tm2 >= 1.0a5",
     "sqlalchemy",
     "sqlalchemy-migrate",
+    "tw2.d3>=0.0.2a1",
     ]
 
 if sys.version_info[:2] == (2,4):

@@ -13,7 +13,7 @@ def setup_schema(command, conf, vars):
     from busmon import model
     # <websetup.websetup.schema.after.model.import>
 
-    
+
     # <websetup.websetup.schema.before.metadata.create_all>
     print "Creating tables"
     model.metadata.create_all(bind=config['pylons.app_globals'].sa_engine)

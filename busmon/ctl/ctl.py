@@ -27,7 +27,7 @@ moksha_ctl.ctl_config.update(ctl_config)
 
 pid_files = ['paster.pid', 'orbited.pid', 'moksha-hub.pid']
 
-PRETTY_PREFIX = "[ " + c.magenta("busmon-ctl") + " ] "
+PRETTY_PREFIX = "[" + c.magenta("busmon-ctl") + "] "
 
 
 @decorator.decorator

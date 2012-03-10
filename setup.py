@@ -24,12 +24,13 @@ testpkgs=['WebTest >= 1.2.3',
                ]
 install_requires=[
     "TurboGears2 >= 2.1.4",
+    "PasteDeploy",
     "Mako",
     "zope.sqlalchemy >= 0.4",
     "repoze.tm2 >= 1.0a5",
     "sqlalchemy",
     "sqlalchemy-migrate",
-    "tw2.d3>=0.0.2a1",
+    "tw2.d3>=0.0.3",
     ]
 
 if sys.version_info[:2] == (2,4):

@@ -30,7 +30,7 @@ install_requires=[
     "repoze.tm2 >= 1.0a5",
     "sqlalchemy",
     "sqlalchemy-migrate",
-    "tw2.d3>=0.0.3",
+    "tw2.d3>=0.0.4a",
     ]
 
 if sys.version_info[:2] == (2,4):
@@ -61,13 +61,20 @@ setup(
             ('templates/**.mako', 'mako', None),
             ('public/**', 'ignore', None)]},
 
-    entry_points="""
-    [paste.app_factory]
-    main = busmon.config.middleware:make_app
-
-    [paste.app_install]
-    main = pylons.util:PylonsInstaller
-    """,
+    entry_points={
+        'paste.app_factory': (
+            'main = busmon.config.middleware:make_app',
+        ),
+        'paste.app_install': (
+            'main = pylons.util:PylonsInstaller',
+        ),
+        'moksha.consumer': (
+            #'wat = busmon.consumers:BusmonConsumer',
+        ),
+        'moksha.widget': (
+            'topics_bar = busmon.widgets:TopicsBarChart',
+        ),
+    },
     dependency_links=[
         "http://www.turbogears.org/2.1/downloads/current/"
         ],

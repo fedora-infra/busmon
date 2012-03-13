@@ -1,17 +1,24 @@
 
 import collections
+
 import moksha.api.widgets.live
+
+import tw2.core as twc
 import tw2.d3
 
 class TopicsBarChart(tw2.d3.BarChart, moksha.api.widgets.live.LiveWidget):
     id = 'topics-bar-chart'
     topic = "*"  # zmq_strict = False :D
-    onmessage = "console.log(json);"  # TODO -- make barchart flip out.
+    onmessage = """
+    tw2.d3.util.bump_value('${id}', json['topic'], 1);
+    """
 
     data = collections.OrderedDict()  # empty
 
+    padding = [30, 10, 10, 120]
     width = 400
     height = 200
+    interval = 2000
 
     def prepare(self):
         super(TopicsBarChart, self).prepare()

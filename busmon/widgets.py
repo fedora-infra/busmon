@@ -11,9 +11,7 @@ global_width = 940
 class TopicsBarChart(tw2.d3.BarChart, moksha.api.widgets.live.LiveWidget):
     id = 'topics-bar-chart'
     topic = "*"  # zmq_strict = False :D
-    onmessage = """
-    tw2.d3.util.bump_value('${id}', json['topic'], 1);
-    """
+    onmessage = "tw2.d3.util.bump_value('${id}', json['topic'], 1);"
 
     data = collections.OrderedDict()  # empty
 
@@ -35,7 +33,7 @@ class MessagesTimeSeries(tw2.d3.TimeSeriesChart,
                         moksha.api.widgets.live.LiveWidget):
     id = 'messages-time-series'
     topic = "*"
-    onmessage = "console.log('wat');tw2.store['${id}'].value++"
+    onmessage = "tw2.store['${id}'].value++"
 
     width = global_width
     height = 200

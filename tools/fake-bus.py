@@ -1,19 +1,23 @@
 #!/usr/bin/env python
+""" This script just emits a bunch of random messages on an endpoint to which
+busmon is listening.  Run it while busmon is running to provide it with fake
+test data.
+
+    :author: Ralph Bean <rbean@redhat.com>
+
+"""
+
 import random
 import time
-import zmq
 import simplejson
 
-# TODO -- have this use fedmsg.
+import fedmsg
+import fedmsg.schema
+
 
 def main():
-    """ main method """
-
     # Prepare our context and publisher
-    context = zmq.Context(1)
-    publisher = context.socket(zmq.PUB)
-    publisher.bind("tcp://*:6543")
-    time.sleep(1)
+    fedmsg.init(publish_endpoint="tcp://*:6543")
 
     # Probabilities of us emitting an event on each topic.
     probs = {
@@ -25,21 +29,19 @@ def main():
         'tagger': 0.6,
     }
 
+    # Main loop
     i = 0
     while True:
-        for topic, thresh in probs.iteritems():
+        for service, thresh in probs.iteritems():
             if random.random() < thresh:
-                publisher.send_multipart(
-                    [topic, simplejson.dumps({
-                        'topic': topic, 'msg': "We" + str(i)
-                    })]
+                print service, thresh
+                fedmsg.send_message(
+                    topic='fake_data',
+                    msg={fedmsg.schema.TEST: "Test data."},
+                    modname=service,
                 )
         time.sleep(random.random())
         i = i + 1
-
-    # We never get here but clean up anyhow
-    publisher.close()
-    context.term()
 
 if __name__ == "__main__":
     main()

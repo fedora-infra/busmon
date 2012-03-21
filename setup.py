@@ -31,6 +31,7 @@ install_requires=[
     "sqlalchemy",
     "sqlalchemy-migrate",
     "tw2.d3>=0.0.5",
+    "fedmsg",
     ]
 
 if sys.version_info[:2] == (2,4):

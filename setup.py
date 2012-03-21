@@ -73,6 +73,7 @@ setup(
         ),
         'moksha.widget': (
             'topics_bar = busmon.widgets:TopicsBarChart',
+            'messages_series = busmon.widgets:MessagesTimeSeries',
         ),
     },
     dependency_links=[

@@ -16,7 +16,7 @@ class TopicsBarChart(tw2.d3.BarChart, moksha.api.widgets.live.LiveWidget):
     data = collections.OrderedDict()  # empty
 
     padding = [30, 10, 10, 120]
-    width = 400
+    width = 800
     height = 200
     interval = 2000
 
@@ -28,3 +28,17 @@ class TopicsBarChart(tw2.d3.BarChart, moksha.api.widgets.live.LiveWidget):
             1000,
             0.001,
         ))
+
+class MessagesTimeSeries(tw2.d3.TimeSeriesChart,
+                        moksha.api.widgets.live.LiveWidget):
+    id = 'messages-time-series'
+    topic = "*"
+    onmessage = "tw2.store['${id}'].value++"
+
+    width = 800
+    height = 200
+
+    # Keep this many data points
+    n = 400
+    # Initialize to n zeros
+    data = [0] * n

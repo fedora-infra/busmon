@@ -1,2 +1,3 @@
 <%inherit file="local:templates.master"/>
-${widget.display() | n}
+${barchart.display() | n}
+${timeseries.display() | n}

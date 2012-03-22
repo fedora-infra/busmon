@@ -1,24 +1,52 @@
-This file is for you to describe the busmon application. Typically
-you would include information such as the information below:
+busmon - Fedora Bus Monitor
+===========================
 
-Installation and Setup
-======================
+busmon is a TurboGears2 app that watches the Fedora Message Bus with `fedmsg
+<http://github.com/ralphbean/fedmsg>`_ and displays realtime graphs about the
+activity on the bus.
 
-Install ``busmon`` using the setup.py script::
+Hacking on busmon
+=================
 
+busmon requires `Moksha <http://moksha.fedorahosted.org>`_ to do it's
+work.  First you'll need to get moksha's source::
+
+    $ git clone git://git.fedorahosted.org/git/moksha.git
+
+Moksha provides some development tools to setup your development
+environment, and busmon wraps these.  You'll need to create a
+configuration file for yourself in ``~/.moksha/ctl.conf``.  In it,
+put the following::
+
+    [busmon]
+    venv = busmon
+    busmon-src-dir = /home/threebean/devel/busmon
+    moksha-src-dir = /home/threebean/devel/moksha
+    verbose = True
+
+Get the source for busmon::
+
+    $ git clone git://github.com/ralphbean/busmon.git
     $ cd busmon
-    $ python setup.py install
 
-Create the project database for any model classes defined::
+The ``busmon-ctl.py`` script references ``~/.moksha/ctl.conf`` so you'll
+need that in place first.  If that's all good, use ``busmon-ctl.py`` to
+bootstrap your environment, build the virtualenv, install all dependencies,
+and start busmon::
 
-    $ paster setup-app development.ini
+    $ ./busmon-ctl.py bootstrap
+    $ ./busmon-ctl.py rebuild
+    $ ./busmon-ctl.py restart
+    $ ./busmon-ctl.py logs
 
-Start the paste http server::
+After you have run ``./busmon-ctl.py bootstrap`` for the first time, you can
+chain subsequent commands, like::
 
-    $ paster serve development.ini
+    $ ./busmon-ctl.py restart logs
 
-While developing you may want the server to reload after changes in package files (or its dependencies) are saved. This can be achieved easily by adding the --reload option::
+If you point your browser at http://localhost:8080/, you should see busmon
+running but with no activity on the charts.  You'll need to run
+``tools/fake-bus.py`` to get some toy development data::
 
-    $ paster serve --reload development.ini
-
-Then you are ready to go.
+    $ workon busmon
+    (busmon)$ ./tools/fake-bus.py

@@ -17,7 +17,7 @@ import fedmsg.schema
 
 def main():
     # Prepare our context and publisher
-    fedmsg.init(publish_endpoint="tcp://*:6543")
+    fedmsg.init(publish_endpoint="tcp://*:5432")
 
     # Probabilities of us emitting an event on each topic.
     probs = {

@@ -8,6 +8,7 @@ import tw2.d3
 
 global_width = 940
 
+
 class TopicsBarChart(tw2.d3.BarChart, moksha.api.widgets.live.LiveWidget):
     id = 'topics-bar-chart'
     topic = "*"  # zmq_strict = False :D
@@ -29,6 +30,7 @@ class TopicsBarChart(tw2.d3.BarChart, moksha.api.widgets.live.LiveWidget):
             0.001,
         ))
 
+
 class MessagesTimeSeries(tw2.d3.TimeSeriesChart,
                         moksha.api.widgets.live.LiveWidget):
     id = 'messages-time-series'
@@ -42,3 +44,19 @@ class MessagesTimeSeries(tw2.d3.TimeSeriesChart,
     n = 400
     # Initialize to n zeros
     data = [0] * n
+
+
+class ColorizedMessagesWidget(moksha.api.widgets.live.LiveWidget):
+    id = 'colorized-messages'
+    template = "mako:busmon.templates.colorized_messages"
+    resources = [twc.CSSLink(link="css/monokai.css")]
+    css_class = "hll"
+
+    topic = 'org.fedoraproject.busmon.colorized-messages'
+    onmessage = """
+    var container = $('#${id}');
+    if ( container.children().size() > 15 ) {
+        container.children().first().remove();
+    }
+    container.append(json.msg);
+    """

@@ -70,11 +70,12 @@ setup(
             'main = pylons.util:PylonsInstaller',
         ),
         'moksha.consumer': (
-            #'wat = busmon.consumers:BusmonConsumer',
+            'colorizer = busmon.consumers:MessageColorizer',
         ),
         'moksha.widget': (
             'topics_bar = busmon.widgets:TopicsBarChart',
             'messages_series = busmon.widgets:MessagesTimeSeries',
+            'colorized_msgs = busmon.widgets:ColorizedMessagesWidget',
         ),
     },
     dependency_links=[

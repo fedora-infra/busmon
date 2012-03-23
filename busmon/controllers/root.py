@@ -11,6 +11,7 @@ from busmon.controllers.error import ErrorController
 from busmon.widgets import (
     TopicsBarChart,
     MessagesTimeSeries,
+    ColorizedMessagesWidget,
 )
 
 __all__ = ['RootController']
@@ -39,6 +40,7 @@ class RootController(BaseController):
         return dict(
             barchart=TopicsBarChart,
             timeseries=MessagesTimeSeries,
+            colorized_messages=ColorizedMessagesWidget,
         )
 
     @expose('busmon.templates.about')

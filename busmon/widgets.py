@@ -6,7 +6,7 @@ import moksha.api.widgets.live
 import tw2.core as twc
 import tw2.d3
 
-global_width = 940
+global_width = 485
 
 
 class TopicsBarChart(tw2.d3.BarChart, moksha.api.widgets.live.LiveWidget):
@@ -16,9 +16,9 @@ class TopicsBarChart(tw2.d3.BarChart, moksha.api.widgets.live.LiveWidget):
 
     data = collections.OrderedDict()  # empty
 
-    padding = [30, 10, 10, 120]
+    padding = [30, 10, 10, global_width/2]
     width = global_width
-    height = 200
+    height = 225
     interval = 2000
 
     def prepare(self):
@@ -38,10 +38,10 @@ class MessagesTimeSeries(tw2.d3.TimeSeriesChart,
     onmessage = "tw2.store['${id}'].value++"
 
     width = global_width
-    height = 200
+    height = 150
 
     # Keep this many data points
-    n = 400
+    n = 200
     # Initialize to n zeros
     data = [0] * n
 
@@ -55,7 +55,7 @@ class ColorizedMessagesWidget(moksha.api.widgets.live.LiveWidget):
     topic = 'org.fedoraproject.busmon.colorized-messages'
     onmessage = """
     var container = $('#${id}');
-    if ( container.children().size() > 15 ) {
+    if ( container.children().size() > 4 ) {
         container.children().first().remove();
     }
     container.append(json.msg);

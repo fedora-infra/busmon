@@ -11,6 +11,7 @@ body, p, a, li, div, input, button {
 
 pre {
   margin: 0;
+  font-size: 70%;
 }
 div.hll {
   -moz-border-radius: 10px;
@@ -38,7 +39,7 @@ div.hll {
   float: left;
   overflow: visible;
   margin-top: -10px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 #header div {
@@ -61,12 +62,26 @@ div.hll {
   background-color: #60605b;
 }
 
+.page {
+    width: 979px;
+    margin: 0 auto;
+}
+.pane {
+}
+.left {
+    width: 525px;
+    float: left;
+}
+.right {
+    width: 450px;
+    float: right;
+}
+
 .content {
   margin-left: auto;
   margin-right: auto;
   overflow: hidden;
   position: relative;
-  width: 960px;
   background-color:white;
   -moz-border-radius: 10px;
   border-radius: 10px;
@@ -74,9 +89,9 @@ div.hll {
   -webkit-box-shadow: 5px 5px 5px #333;
   -moz-box-shadow: 5px 5px 5px #333;
   box-shadow: 5px 5px 5px #333;
-  padding: 1.6em;
+  padding: 0.8em;
 }
 
 .spacer {
-    margin: 10px;
+    margin: 4px;
 }

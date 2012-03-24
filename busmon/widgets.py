@@ -5,18 +5,27 @@ import moksha.api.widgets.live
 
 import tw2.core as twc
 import tw2.d3
+from tw2.jquery import jquery_js
 
 global_width = 485
 
 
-class TopicsBarChart(tw2.d3.BarChart, moksha.api.widgets.live.LiveWidget):
+class BusmonWidget(moksha.api.widgets.live.LiveWidget):
+    resources = [
+        twc.JSLink(link="javascript/busmon.js", resources=[jquery_js]),
+    ]
+
+
+class TopicsBarChart(tw2.d3.BarChart, BusmonWidget):
     id = 'topics-bar-chart'
     topic = "*"  # zmq_strict = False :D
-    onmessage = "tw2.d3.util.bump_value('${id}', json['topic'], 1);"
+    onmessage = """busmon.filter(function() {
+        tw2.d3.util.bump_value('${id}', json['topic'], 1);
+    }, json)"""
 
     data = collections.OrderedDict()  # empty
 
-    padding = [30, 10, 10, global_width/2]
+    padding = [30, 10, 10, global_width / 2]
     width = global_width
     height = 225
     interval = 2000
@@ -31,11 +40,12 @@ class TopicsBarChart(tw2.d3.BarChart, moksha.api.widgets.live.LiveWidget):
         ))
 
 
-class MessagesTimeSeries(tw2.d3.TimeSeriesChart,
-                        moksha.api.widgets.live.LiveWidget):
+class MessagesTimeSeries(tw2.d3.TimeSeriesChart, BusmonWidget):
     id = 'messages-time-series'
     topic = "*"
-    onmessage = "tw2.store['${id}'].value++"
+    onmessage = """busmon.filter(function() {
+        tw2.store['${id}'].value++;
+    }, json)"""
 
     width = global_width
     height = 150
@@ -46,17 +56,17 @@ class MessagesTimeSeries(tw2.d3.TimeSeriesChart,
     data = [0] * n
 
 
-class ColorizedMessagesWidget(moksha.api.widgets.live.LiveWidget):
+class ColorizedMessagesWidget(BusmonWidget):
     id = 'colorized-messages'
     template = "mako:busmon.templates.colorized_messages"
-    resources = [twc.CSSLink(link="css/monokai.css")]
+    resources = BusmonWidget.resources + [twc.CSSLink(link="css/monokai.css")]
     css_class = "hll"
 
     topic = 'org.fedoraproject.busmon.colorized-messages'
-    onmessage = """
-    var container = $('#${id}');
-    if ( container.children().size() > 4 ) {
-        container.children().first().remove();
-    }
-    container.append(json.msg);
-    """
+    onmessage = """busmon.filter(function() {
+        var container = $('#${id}');
+        if ( container.children().size() > 4 ) {
+            container.children().first().remove();
+        }
+        container.append(json.msg);
+    }, json)"""

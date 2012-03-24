@@ -92,6 +92,15 @@ div.hll {
   padding: 0.8em;
 }
 
+.filterbox {
+    margin-right: 190px;
+    margin-left: -190px;
+}
+.filterbox input {
+    width: 100%;
+    border: 1px dashed;
+}
+
 .spacer {
     margin: 4px;
 }

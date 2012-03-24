@@ -11,6 +11,11 @@
     <div id="header">
       <div><H1><span id="logo">Fedora</span> bus·mon</H1></div>
     </div>
+    <div class="right pane">
+      <div class="content filterbox">
+        <input placeholder="Filter topics with a regular expression"/>
+      </div>
+    </div>
     <div class="clear"></div>
     ${self.body()}
     <div class="clear"></div>

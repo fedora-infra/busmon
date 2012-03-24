@@ -27,3 +27,9 @@ $.extend(busmon, {
         }
     },
 });
+
+$(document).ready(function() {
+    $('.filterbox input').change(function(e) {
+        busmon.apply_new_regex($('.filterbox input').val());
+    });
+});

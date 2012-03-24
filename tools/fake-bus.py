@@ -37,11 +37,11 @@ def main():
                 print service, thresh
                 fedmsg.send_message(
                     topic='fake_data',
-                    msg={fedmsg.schema.TEST: "Test data."},
+                    msg={fedmsg.schema.TEST: "Test data." + str(i)},
                     modname=service,
                 )
+                i = i + 1
         time.sleep(random.random())
-        i = i + 1
 
 if __name__ == "__main__":
     main()

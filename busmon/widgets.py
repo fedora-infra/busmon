@@ -66,7 +66,11 @@ class ColorizedMessagesWidget(BusmonWidget):
     onmessage = """busmon.filter_content(function() {
         var container = $('#${id}');
         if ( container.children().size() > 4 ) {
-            container.children().first().remove();
+            container.children().first().slideUp(100, function () {
+                $(this).remove();
+                container.append(json.msg);
+            });
+        } else {
+            container.append(json.msg);
         }
-        container.append(json.msg);
     }, json)"""

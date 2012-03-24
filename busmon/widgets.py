@@ -63,7 +63,7 @@ class ColorizedMessagesWidget(BusmonWidget):
     css_class = "hll"
 
     topic = 'org.fedoraproject.busmon.colorized-messages'
-    onmessage = """busmon.filter(function() {
+    onmessage = """busmon.filter_content(function() {
         var container = $('#${id}');
         if ( container.children().size() > 4 ) {
             container.children().first().remove();

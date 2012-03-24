@@ -2,13 +2,19 @@ if (typeof(busmon) == 'undefined') { busmon = {}; }
 
 $.extend(busmon, {
     // A _regex that gets updated by user input.  Used by busmon.filter
-    regex: new RegExp("^.*$$"),
+    regex: new RegExp(".*"),
 
     // Filtration scheme applied to all onmessage callbacks.
     // Rejects the callback if json.topic doesn't match the current global
     // regex.
     filter: function(callback, json) {
         if ( busmon.regex.test(json.topic) ) { callback(); }
+    },
+
+    // A special version of busmon.filter() that checks the message body instead
+    // of the topic.  Used by the ColorizedMessages widget.
+    filter_content: function(callback, json) {
+        if ( busmon.regex.test(json.msg) ) { callback(); }
     },
 
     apply_new_regex: function(value) {

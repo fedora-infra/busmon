@@ -42,7 +42,7 @@ print install_requires
 
 setup(
     name='busmon',
-    version='0.1',
+    version='0.2.0',
     description='',
     author='',
     author_email='',

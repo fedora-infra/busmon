@@ -32,6 +32,8 @@ install_requires=[
     "sqlalchemy-migrate",
     "tw2.d3>=0.0.5",
     "fedmsg>=0.0.1",
+    "moksha>=0.7.0a1",
+    "tg.devtools",
     ]
 
 if sys.version_info[:2] == (2,4):

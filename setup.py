@@ -24,12 +24,14 @@ testpkgs=['WebTest >= 1.2.3',
                ]
 install_requires=[
     "TurboGears2 >= 2.1.4",
+    "PasteDeploy",
     "Mako",
     "zope.sqlalchemy >= 0.4",
     "repoze.tm2 >= 1.0a5",
     "sqlalchemy",
     "sqlalchemy-migrate",
-    "tw2.d3>=0.0.2a1",
+    "tw2.d3>=0.0.5",
+    "fedmsg>=0.0.1",
     ]
 
 if sys.version_info[:2] == (2,4):
@@ -60,13 +62,22 @@ setup(
             ('templates/**.mako', 'mako', None),
             ('public/**', 'ignore', None)]},
 
-    entry_points="""
-    [paste.app_factory]
-    main = busmon.config.middleware:make_app
-
-    [paste.app_install]
-    main = pylons.util:PylonsInstaller
-    """,
+    entry_points={
+        'paste.app_factory': (
+            'main = busmon.config.middleware:make_app',
+        ),
+        'paste.app_install': (
+            'main = pylons.util:PylonsInstaller',
+        ),
+        'moksha.consumer': (
+            'colorizer = busmon.consumers:MessageColorizer',
+        ),
+        'moksha.widget': (
+            'topics_bar = busmon.widgets:TopicsBarChart',
+            'messages_series = busmon.widgets:MessagesTimeSeries',
+            'colorized_msgs = busmon.widgets:ColorizedMessagesWidget',
+        ),
+    },
     dependency_links=[
         "http://www.turbogears.org/2.1/downloads/current/"
         ],

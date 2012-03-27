@@ -1,0 +1,110 @@
+html,
+body {
+  height: 100%;
+  background-color: #60605b;
+}
+
+body, p, a, li, div, input, button {
+  font-family: Cantarell, sans-serif;
+  font-size: 12pt;
+}
+
+pre {
+  margin: 0;
+  font-size: 70%;
+}
+div.hll {
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border: 1px solid black;
+  -webkit-box-shadow: 2px 2px 2px #333;
+  -moz-box-shadow: 2px 2px 2px #333;
+  box-shadow: 2px 2px 2px #333;
+  padding: 1.0em;
+}
+
+
+
+#header h1 span#logo {
+	background:transparent url("../images/fedora-logo.png") no-repeat scroll 0px 0px;
+	height: 50px;
+	width: 162px;
+	display: block;
+	text-indent: -9999px;
+}
+
+#header {
+  height: 120px;
+  background-color: #60605b;
+  float: left;
+  overflow: visible;
+  margin-top: -10px;
+  margin-bottom: 5px;
+}
+
+#header div {
+  z-index: 200;
+  overflow: visible;
+}
+
+#header h1 {
+  font-family: "ComfortaaRegular", "sans-serif" !important;
+  text-transform: lowercase;
+  color: #d8d9dc;
+  font-size: 35pt;
+  font-weight: normal;
+  line-height: 88%;
+  margin-bottom: 1.6em;
+  margin-left: 1.2em;
+}
+
+.body {
+  background-color: #60605b;
+}
+
+.page {
+    width: 979px;
+    margin: 0 auto;
+}
+.pane {
+}
+.left {
+    width: 525px;
+    float: left;
+}
+.right {
+    width: 450px;
+    float: right;
+}
+
+#colorized-messages {
+    min-height: 428px;
+}
+
+.content {
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  position: relative;
+  background-color:white;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border: 2px solid black;
+  -webkit-box-shadow: 5px 5px 5px #333;
+  -moz-box-shadow: 5px 5px 5px #333;
+  box-shadow: 5px 5px 5px #333;
+  padding: 0.8em;
+}
+
+.filterbox {
+    margin-right: 190px;
+    margin-left: -190px;
+}
+.filterbox input {
+    width: 100%;
+    border: 1px dashed;
+}
+
+.spacer {
+    margin: 4px;
+}

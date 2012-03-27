@@ -10,6 +10,8 @@ from busmon.controllers.error import ErrorController
 
 from busmon.widgets import (
     TopicsBarChart,
+    MessagesTimeSeries,
+    ColorizedMessagesWidget,
 )
 
 __all__ = ['RootController']
@@ -35,7 +37,11 @@ class RootController(BaseController):
     @expose('busmon.templates.index')
     def index(self):
         """Handle the front-page."""
-        return dict(widget=TopicsBarChart)
+        return dict(
+            barchart=TopicsBarChart,
+            timeseries=MessagesTimeSeries,
+            colorized_messages=ColorizedMessagesWidget,
+        )
 
     @expose('busmon.templates.about')
     def about(self):

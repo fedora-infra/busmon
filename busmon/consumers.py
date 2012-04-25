@@ -7,8 +7,7 @@ import fedmsg.json
 
 
 class MessageColorizer(Consumer):
-
-    app = "busmon"  # hopefully this won't be necessary anymore
+    app = "busmon"
     topic = "*"
     destination_topic = "colorized-messages"
     jsonify = False
@@ -29,5 +28,4 @@ class MessageColorizer(Consumer):
         fedmsg.send_message(
             topic=self.destination_topic,
             msg=code,
-            validate=False,
         )

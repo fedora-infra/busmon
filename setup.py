@@ -31,7 +31,7 @@ install_requires=[
     "sqlalchemy",
     "sqlalchemy-migrate",
     "tw2.d3>=0.0.5",
-    "fedmsg>=0.0.1",
+    "fedmsg>=0.1.1",
     "moksha>=0.7.0a1",
     "tg.devtools",
     ]

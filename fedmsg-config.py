@@ -12,9 +12,6 @@ config = dict(
         # services can listen.
         relay_outbound="tcp://*:4001",
 
-        # ME!
-        busmon="tcp://*:2001",
-
         # For other, more 'normal' services, fedmsg will try to guess the
         # name of it's calling module to determine which endpoint definition
         # to use.  This can be overridden by explicitly providing the name in
@@ -24,6 +21,8 @@ config = dict(
         fedoratagger="tcp://*:3003",
         mediawiki="tcp://*:3004",
         pkgdb="tcp://*:3005",
+
+        busmon="tcp://*:3006",
     ),
 
     # This is the address of an active->passive relay.  It is used for the
@@ -43,4 +42,16 @@ config = dict(
     high_water_mark=0,
 
     io_threads=1,
+
+
+    ## For the fedmsg-hub and fedmsg-relay. ##
+
+    # We almost always want the fedmsg-hub to be sending messages with zmq as
+    # opposed to amqp or stomp.
+    zmq_enabled=True,
+
+    # When subscribing to messages, we want to allow splats ('*') so we tell the
+    # hub to not be strict when comparing messages topics to subscription
+    # topics.
+    zmq_strict=False,
 )

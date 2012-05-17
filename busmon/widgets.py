@@ -1,4 +1,5 @@
 
+import tg
 import collections
 
 import moksha.api.widgets.live
@@ -14,6 +15,7 @@ class BusmonWidget(moksha.api.widgets.live.LiveWidget):
     resources = [
         twc.JSLink(link="javascript/busmon.js", resources=[jquery_js]),
     ]
+    backend = tg.config['moksha.livesocket.backend']
 
 
 class TopicsBarChart(tw2.d3.BarChart, BusmonWidget):

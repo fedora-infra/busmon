@@ -4,7 +4,7 @@
 from busmon.config.app_cfg import base_config
 from busmon.config.environment import load_environment
 
-import moksha.middleware
+from moksha.middleware import make_moksha_middleware
 
 __all__ = ['make_app']
 
@@ -34,9 +34,10 @@ def make_app(global_conf, full_stack=True, **app_conf):
 
     """
 
+    wrap_app = lambda app: make_moksha_middleware(app, app_conf)
     app = make_base_app(
         global_conf, full_stack=True,
-        wrap_app=moksha.middleware.make_moksha_middleware,
+        wrap_app=wrap_app,
         **app_conf)
 
     # Wrap your base TurboGears 2 application with custom middleware here

@@ -31,22 +31,25 @@ install_requires=[
     "sqlalchemy",
     "sqlalchemy-migrate",
     "tw2.d3>=0.0.5",
-    "fedmsg>=0.0.1",
+    "fedmsg>=0.1.6",
+    "moksha>=0.7.0a1",
+    "tg.devtools",
+    "Pylons==1.0",
+    "WebOb<=1.1.1",
     ]
 
 if sys.version_info[:2] == (2,4):
     testpkgs.extend(['hashlib', 'pysqlite'])
     install_requires.extend(['hashlib', 'pysqlite'])
 
-print install_requires
-
 setup(
     name='busmon',
-    version='0.1',
-    description='',
-    author='',
-    author_email='',
-    #url='',
+    version='0.2.2',
+    description='A webapp for visualizing activity on the Fedora Message Bus.',
+    author='Ralph Bean',
+    author_email='rbean@redhat.com',
+    url='http://github.com/ralphbean/busmon',
+    license='GPLv2+',
     setup_requires=["PasteScript >= 1.7"],
     paster_plugins=['PasteScript', 'Pylons', 'TurboGears2', 'tg.devtools'],
     packages=find_packages(exclude=['ez_setup']),

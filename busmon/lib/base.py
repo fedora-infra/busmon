@@ -3,6 +3,7 @@
 """The base Controller API."""
 
 from tg import TGController, tmpl_context
+from tg import config
 from tg.render import render
 from tg.i18n import ugettext as _, ungettext
 import busmon.model as model
@@ -27,5 +28,6 @@ class BaseController(TGController):
         # the request is routed to. This routing information is
         # available in environ['pylons.routes_dict']
 
-        tmpl_context.moksha_socket = moksha.api.widgets.moksha_socket
+        tmpl_context.moksha_socket = \
+            moksha.api.widgets.get_moksha_socket(config)
         return TGController.__call__(self, environ, start_response)

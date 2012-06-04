@@ -12,21 +12,19 @@ import time
 import simplejson
 
 import fedmsg
-import fedmsg.schema
 
 
 def main():
     # Prepare our context and publisher
-    fedmsg.init(publish_endpoint="tcp://*:5432")
+    fedmsg.init(name="bodhi.marat")
 
     # Probabilities of us emitting an event on each topic.
     probs = {
-        'koji': 0.35,
-        'bodhi': 0.2,
+        'bodhi': 0.35,
+        'fedoratagger': 0.2,
         'pkgdb': 0.1,
         'fas': 0.2,
-        'autoqa': 0.3,
-        'tagger': 0.6,
+        'mediawiki': 0.3,
     }
 
     # Main loop
@@ -37,7 +35,7 @@ def main():
                 print service, thresh
                 fedmsg.send_message(
                     topic='fake_data',
-                    msg={fedmsg.schema.TEST: "Test data." + str(i)},
+                    msg={'test': "Test data." + str(i)},
                     modname=service,
                 )
                 i = i + 1

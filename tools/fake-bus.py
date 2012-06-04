@@ -16,7 +16,7 @@ import fedmsg
 
 def main():
     # Prepare our context and publisher
-    fedmsg.init(name="default")
+    fedmsg.init(name="bodhi.marat")
 
     # Probabilities of us emitting an event on each topic.
     probs = {

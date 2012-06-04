@@ -42,15 +42,14 @@ if sys.version_info[:2] == (2,4):
     testpkgs.extend(['hashlib', 'pysqlite'])
     install_requires.extend(['hashlib', 'pysqlite'])
 
-print install_requires
-
 setup(
     name='busmon',
-    version='0.2.0',
-    description='',
-    author='',
-    author_email='',
-    #url='',
+    version='0.2.2',
+    description='A webapp for visualizing activity on the Fedora Message Bus.',
+    author='Ralph Bean',
+    author_email='rbean@redhat.com',
+    url='http://github.com/ralphbean/busmon',
+    license='GPLv2+',
     setup_requires=["PasteScript >= 1.7"],
     paster_plugins=['PasteScript', 'Pylons', 'TurboGears2', 'tg.devtools'],
     packages=find_packages(exclude=['ez_setup']),

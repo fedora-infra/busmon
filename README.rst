@@ -31,12 +31,14 @@ In the first::
 
     $ workon busmon
     (busmon)$ python tools/fake-bus.py
+
 In the second::
 
     $ workon busmon
     (busmon)$ fedmsg-hub --websocket-server-port 9919
 
 In the third::
+
     $ workon busmon
     (busmon)$ paster serve --reload development.ini
 

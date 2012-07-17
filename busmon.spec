@@ -67,7 +67,7 @@ Requires:       fedmsg >= 0.1.5
 Requires:       moksha-server >= 0.8.0
 
 %description
-A web application for adding and ranking tags for Fedora packages.
+A webapp for visualizing the Fedora Message Bus
 
 %prep
 %setup -q
@@ -103,5 +103,5 @@ rm -fr %{buildroot}%{python_sitelib}/migration
 %{python_sitelib}/%{modname}-%{version}-py%{pyver}.egg-info/
 
 %changelog
-* Mon Jun 04 2012 Ralph Bean <rbean@redhat.com> - 0.2.2
+* Mon Jun 04 2012 Ralph Bean <rbean@redhat.com> - 0.2.2-1
 - Fork the spec from fedora-tagger.spec

@@ -90,10 +90,12 @@ mv setup.py.tmp setup.py
 
 %install
 %{__python} setup.py install -O1 --skip-build \
-    --install-data=%{_datadir} --root %{buildroot}
-%{__python} setup.py archive_tw2_resources -f -o %%{buildroot}%{_datadir}/%{name}/public/toscawidgets -d busmon
+    --install-data=%{_datadir} --root=%{buildroot}
 
-rm -fr %{buildroot}%{python_sitelib}/migration
+%{__mkdir_p} %{buildroot}%{_datadir}/%{name}/public/toscawidgets
+%{__python} setup.py archive_tw2_resources -f -o %{buildroot}%{_datadir}/%{name}/public/toscawidgets -d busmon
+
+rm -fr %{buildroot}%{python_sitelib}/%{modname}-%{version}*/migration
 
 %{__mkdir_p} %{buildroot}%{_datadir}/%{name}/apache
 %{__install} apache/%{modname}.wsgi %{buildroot}%{_datadir}/%{name}/apache/%{modname}.wsgi
@@ -104,6 +106,7 @@ rm -fr %{buildroot}%{python_sitelib}/migration
 %{_datadir}/%{name}/
 %{python_sitelib}/%{modname}/
 %{python_sitelib}/%{modname}-%{version}-py%{pyver}.egg-info/
+#%{python_sitelib}/%{modname}-%{version}-*.egg/
 
 %changelog
 * Tue Jul 17 2012 Ralph Bean <rbean@redhat.com> - 0.2.3-1

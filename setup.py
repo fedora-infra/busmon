@@ -23,19 +23,19 @@ testpkgs=['WebTest >= 1.2.3',
                'repoze.who-testutil >= 1.0.1',
                ]
 install_requires=[
+    "Pylons==1.0",
+    "WebOb==1.0.8",
     "TurboGears2 >= 2.1.4",
     "PasteDeploy",
     "Mako",
     "zope.sqlalchemy >= 0.4",
-    "repoze.tm2 >= 1.0a5",
+    "repoze.tm2 == 1.0a4",
     "sqlalchemy",
     "sqlalchemy-migrate",
     "tw2.d3>=0.0.5",
     "fedmsg>=0.1.6",
     "moksha>=0.7.0a1",
     "tg.devtools",
-    "Pylons==1.0",
-    "WebOb<=1.1.1",
     ]
 
 if sys.version_info[:2] == (2,4):
@@ -44,7 +44,7 @@ if sys.version_info[:2] == (2,4):
 
 setup(
     name='busmon',
-    version='0.2.2',
+    version='0.2.3',
     description='A webapp for visualizing activity on the Fedora Message Bus.',
     author='Ralph Bean',
     author_email='rbean@redhat.com',
@@ -59,7 +59,8 @@ setup(
     tests_require=testpkgs,
     package_data={'busmon': ['i18n/*/LC_MESSAGES/*.mo',
                                  'templates/*/*',
-                                 'public/*/*']},
+                                 #'public/*/*',
+                            ]},
     message_extractors={'busmon': [
             ('**.py', 'python', None),
             ('templates/**.mako', 'mako', None),

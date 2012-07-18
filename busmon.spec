@@ -43,6 +43,9 @@ BuildRequires:  python-bunch
 BuildRequires:  python-fedora
 BuildRequires:  python-fedora-turbogears2
 BuildRequires:  fedmsg >= 0.1.5
+%if %{?rhel}%{!?rhel:0} <= 6
+BuildRequires:  python-ordereddict
+%endif
 
 Requires:       TurboGears2
 Requires:       python-mako
@@ -64,6 +67,10 @@ Requires:       pycurl
 Requires:       python-tw2-d3
 Requires:       fedmsg >= 0.1.5
 Requires:       moksha-server >= 0.8.0
+%if %{?rhel}%{!?rhel:0} <= 6
+Requires:       python-ordereddict
+%endif
+
 
 %description
 A webapp for visualizing the Fedora Message Bus
@@ -72,16 +79,14 @@ A webapp for visualizing the Fedora Message Bus
 %setup -q
 
 # The old switch-a-roo
-sed -i "s/WebOb==1.0.8/WebOb<=1.1.1/g" setup.py > setup.py.tmp
-mv setup.py.tmp setup.py
+sed -i "s/WebOb==1.0.8/WebOb<=1.1.1/g" setup.py
 sed -i '/\"tg.devtools\"/d' setup.py
+sed -i '/\"repoze.tm\"/d' setup.py
 
 %if %{?rhel}%{!?rhel:0} >= 6
-
 # Make sure that epel/rhel picks up the correct version of webob
 awk 'NR==1{print "import __main__; __main__.__requires__ = __requires__ = [\"WebOb>=1.0\", \"sqlalchemy>=0.7\"]; import pkg_resources"}1' setup.py > setup.py.tmp
 mv setup.py.tmp setup.py
-
 %endif
 
 
@@ -95,7 +100,7 @@ mv setup.py.tmp setup.py
 %{__mkdir_p} %{buildroot}%{_datadir}/%{name}/public/toscawidgets
 %{__python} setup.py archive_tw2_resources -f -o %{buildroot}%{_datadir}/%{name}/public/toscawidgets -d busmon
 
-rm -fr %{buildroot}%{python_sitelib}/%{modname}-%{version}*/migration
+rm -fr %{buildroot}%{python_sitelib}/migration
 
 %{__mkdir_p} %{buildroot}%{_datadir}/%{name}/apache
 %{__install} apache/%{modname}.wsgi %{buildroot}%{_datadir}/%{name}/apache/%{modname}.wsgi
@@ -105,8 +110,7 @@ rm -fr %{buildroot}%{python_sitelib}/%{modname}-%{version}*/migration
 %doc README.rst
 %{_datadir}/%{name}/
 %{python_sitelib}/%{modname}/
-%{python_sitelib}/%{modname}-%{version}-py%{pyver}.egg-info/
-#%{python_sitelib}/%{modname}-%{version}-*.egg/
+%{python_sitelib}/%{modname}-%{version}*
 
 %changelog
 * Tue Jul 17 2012 Ralph Bean <rbean@redhat.com> - 0.2.3-1

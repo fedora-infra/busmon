@@ -23,9 +23,9 @@ testpkgs=['WebTest >= 1.2.3',
                'repoze.who-testutil >= 1.0.1',
                ]
 install_requires=[
-    "Pylons==1.0",
+    "Pylons<=1.0",
     "WebOb==1.0.8",
-    "TurboGears2 >= 2.1.4",
+    "TurboGears2",
     "PasteDeploy",
     "Mako",
     "zope.sqlalchemy >= 0.4",
@@ -41,6 +41,11 @@ install_requires=[
 if sys.version_info[:2] == (2,4):
     testpkgs.extend(['hashlib', 'pysqlite'])
     install_requires.extend(['hashlib', 'pysqlite'])
+
+if sys.version_info[0] == 2 and sys.version_info[1] <= 6:
+    install_requires.extend([
+        'ordereddict',
+    ])
 
 setup(
     name='busmon',

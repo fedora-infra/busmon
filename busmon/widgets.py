@@ -1,6 +1,9 @@
 
 import tg
-import collections
+try:
+    from collections import OrderedDict
+except ImportError:
+    from ordereddict import OrderedDict
 
 import moksha.api.widgets.live
 
@@ -15,7 +18,7 @@ class BusmonWidget(moksha.api.widgets.live.LiveWidget):
     resources = [
         twc.JSLink(link="javascript/busmon.js", resources=[jquery_js]),
     ]
-    backend = tg.config['moksha.livesocket.backend']
+    backend = tg.config.get('moksha.livesocket.backend', 'websocket')
 
 
 class TopicsBarChart(tw2.d3.BarChart, BusmonWidget):
@@ -25,7 +28,7 @@ class TopicsBarChart(tw2.d3.BarChart, BusmonWidget):
         tw2.d3.util.bump_value('${id}', json['topic'], 1);
     }, json)"""
 
-    data = collections.OrderedDict()  # empty
+    data = OrderedDict()  # empty
 
     padding = [30, 10, 10, global_width / 2]
     width = global_width

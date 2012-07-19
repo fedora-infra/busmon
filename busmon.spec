@@ -4,8 +4,8 @@
 %define modname busmon
 
 Name:           busmon
-Version:        0.2.3
-Release:        2%{?dist}
+Version:        0.2.4
+Release:        1%{?dist}
 Summary:        A webapp for visualizing the Fedora Message Bus
 
 License:        LGPLv2
@@ -66,7 +66,6 @@ Requires:       python-kitchen
 Requires:       pycurl
 Requires:       python-tw2-d3
 Requires:       fedmsg >= 0.1.5
-Requires:       moksha-server >= 0.8.0
 %if %{?rhel}%{!?rhel:0} <= 6
 Requires:       python-ordereddict
 %endif
@@ -113,6 +112,10 @@ rm -fr %{buildroot}%{python_sitelib}/migration
 %{python_sitelib}/%{modname}-%{version}*
 
 %changelog
+* Wed Jul 18 2012 Ralph Bean <rbean@redhat.com> - 0.2.4-1
+- Ripped out busmon.model and sqlalchemy deps.  Unnecessary.
+- Removed dep on moksha-server.
+
 * Tue Jul 17 2012 Ralph Bean <rbean@redhat.com> - 0.2.3-1
 - Tweaks to the build process.
 - Removed hard dep on pylons version.

@@ -28,10 +28,7 @@ install_requires=[
     "TurboGears2",
     "PasteDeploy",
     "Mako",
-    "zope.sqlalchemy >= 0.4",
     "repoze.tm2 == 1.0a4",
-    "sqlalchemy",
-    "sqlalchemy-migrate",
     "tw2.d3>=0.0.5",
     "fedmsg>=0.1.6",
     "moksha>=0.7.0a1",
@@ -39,8 +36,8 @@ install_requires=[
     ]
 
 if sys.version_info[:2] == (2,4):
-    testpkgs.extend(['hashlib', 'pysqlite'])
-    install_requires.extend(['hashlib', 'pysqlite'])
+    testpkgs.extend(['hashlib'])
+    install_requires.extend(['hashlib'])
 
 if sys.version_info[0] == 2 and sys.version_info[1] <= 6:
     install_requires.extend([
@@ -49,7 +46,7 @@ if sys.version_info[0] == 2 and sys.version_info[1] <= 6:
 
 setup(
     name='busmon',
-    version='0.2.3',
+    version='0.2.4',
     description='A webapp for visualizing activity on the Fedora Message Bus.',
     author='Ralph Bean',
     author_email='rbean@redhat.com',

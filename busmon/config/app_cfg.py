@@ -16,7 +16,6 @@ convert them into boolean, for example, you should use the
 from tg.configuration import AppConfig
 
 import busmon
-from busmon import model
 from busmon.lib import app_globals, helpers
 
 base_config = AppConfig()
@@ -30,9 +29,7 @@ base_config.renderers.append('json')
 base_config.default_renderer = 'mako'
 base_config.renderers.append('mako')
 #Configure the base SQLALchemy Setup
-base_config.use_sqlalchemy = True
-base_config.model = busmon.model
-base_config.DBSession = busmon.model.DBSession
+base_config.use_sqlalchemy = False
 
 
 base_config.use_toscawidgets=False

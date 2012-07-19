@@ -3,7 +3,6 @@
 
 from tg import expose, flash, require, url, lurl, request, redirect
 from tg.i18n import ugettext as _, lazy_ugettext as l_
-from busmon.model import DBSession, metadata
 
 from busmon.lib.base import BaseController
 from busmon.controllers.error import ErrorController

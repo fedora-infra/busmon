@@ -6,7 +6,6 @@ from tg import TGController, tmpl_context
 from tg import config
 from tg.render import render
 from tg.i18n import ugettext as _, ungettext
-import busmon.model as model
 
 import moksha.api.widgets
 

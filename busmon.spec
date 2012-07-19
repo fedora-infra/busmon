@@ -4,8 +4,8 @@
 %define modname busmon
 
 Name:           busmon
-Version:        0.2.4
-Release:        1%{?dist}
+Version:        0.2.5
+Release:        4%{?dist}
 Summary:        A webapp for visualizing the Fedora Message Bus
 
 License:        LGPLv2
@@ -107,11 +107,22 @@ rm -fr %{buildroot}%{python_sitelib}/migration
 
 %files
 %doc README.rst
-%{_datadir}/%{name}/
 %{python_sitelib}/%{modname}/
 %{python_sitelib}/%{modname}-%{version}*
 
+%{_datadir}/%{name}/
+# Just for verification's sake.
+%{_datadir}/%{name}/public/toscawidgets/resources/moksha.widgets.moksha_js/static/moksha.js
+%{_datadir}/%{name}/public/toscawidgets/resources/tw2.jqplugins.gritter/static/jquery/gritter/js/jquery.gritter.min.js
+
 %changelog
+* Wed Jul 18 2012 Ralph Bean <rbean@redhat.com> - 0.2.5-4
+- Bugfix to archiving moksha resources.
+
+* Wed Jul 18 2012 Ralph Bean <rbean@redhat.com> - 0.2.5-1
+- Compat with older TurboGears for production
+- Archiving moksha resources as well as busmon
+
 * Wed Jul 18 2012 Ralph Bean <rbean@redhat.com> - 0.2.4-1
 - Ripped out busmon.model and sqlalchemy deps.  Unnecessary.
 - Removed dep on moksha-server.

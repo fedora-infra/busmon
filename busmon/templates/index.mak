@@ -1,4 +1,4 @@
-<%inherit file="local:templates.master"/>
+<%inherit file="busmon.templates.master"/>
 <div class="page">
   <div class="left pane">
     <div class="content">

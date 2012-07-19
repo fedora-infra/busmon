@@ -46,7 +46,7 @@ if sys.version_info[0] == 2 and sys.version_info[1] <= 6:
 
 setup(
     name='busmon',
-    version='0.2.4',
+    version='0.2.5',
     description='A webapp for visualizing activity on the Fedora Message Bus.',
     author='Ralph Bean',
     author_email='rbean@redhat.com',
@@ -82,6 +82,13 @@ setup(
             'topics_bar = busmon.widgets:TopicsBarChart',
             'messages_series = busmon.widgets:MessagesTimeSeries',
             'colorized_msgs = busmon.widgets:ColorizedMessagesWidget',
+        ),
+        'tw2.widgets': (
+            # FIXME -- this is a hack until the following is resolved
+            # https://fedorahosted.org/moksha/ticket/247
+            "moksha_js = moksha.widgets.moksha_js",
+            # FIXME -- I dunno whats up with this one
+            "gritter_js = tw2.jqplugins.gritter.base",
         ),
     },
     dependency_links=[

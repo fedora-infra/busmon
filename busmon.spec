@@ -5,7 +5,7 @@
 
 Name:           busmon
 Version:        0.2.4
-Release:        1%{?dist}
+Release:        3%{?dist}
 Summary:        A webapp for visualizing the Fedora Message Bus
 
 License:        LGPLv2

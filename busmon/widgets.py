@@ -67,8 +67,10 @@ class ColorizedMessagesWidget(BusmonWidget):
     resources = BusmonWidget.resources + [twc.CSSLink(link="css/monokai.css")]
     css_class = "hll"
 
-    # TODO -- the 'dev' in this topic should be configurable
-    topic = 'org.fedoraproject.dev.busmon.colorized-messages'
+    topic = 'org.fedoraproject.{env}.busmon.colorized-messages'.format(
+        env=tg.config.get("fedmsg.environment")
+    )
+
     onmessage = """busmon.filter_content(function() {
         var container = $('#${id}');
         if ( container.children().size() > 4 ) {

@@ -30,7 +30,7 @@ install_requires=[
     "Mako",
     "repoze.tm2 == 1.0a4",
     "tw2.d3>=0.0.5",
-    "fedmsg>=0.1.6",
+    "fedmsg>=0.3.0",
     "moksha>=0.7.0a1",
     "tg.devtools",
     ]

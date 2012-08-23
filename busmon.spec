@@ -42,7 +42,7 @@ BuildRequires:  python-docutils
 BuildRequires:  python-bunch
 BuildRequires:  python-fedora
 BuildRequires:  python-fedora-turbogears2
-BuildRequires:  fedmsg >= 0.3.0
+BuildRequires:  fedmsg >= 0.3.7
 %if %{?rhel}%{!?rhel:0} <= 6
 BuildRequires:  python-ordereddict
 %endif
@@ -65,7 +65,7 @@ Requires:       python-repoze-what-plugins-sql
 Requires:       python-kitchen
 Requires:       pycurl
 Requires:       python-tw2-d3
-Requires:       fedmsg >= 0.3.0
+Requires:       fedmsg >= 0.3.7
 %if %{?rhel}%{!?rhel:0} <= 6
 Requires:       python-ordereddict
 %endif

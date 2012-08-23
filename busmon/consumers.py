@@ -15,15 +15,8 @@ log = logging.getLogger("moksha.hub")
 class MessageColorizer(FedmsgConsumer):
     topic = "*"
     destination_topic = "colorized-messages"
+    config_key = 'busmon.consumers.enabled'
     jsonify = False
-
-    def __init__(self, hub):
-        ENABLED = 'busmon.consumers.enabled'
-        if not asbool(hub.config.get(ENABLED, False)):
-            log.info('busmon.consumers:MessageColorizer disabled.')
-            return
-
-        super(MessageColorizer, self).__init__(hub)
 
     def consume(self, message):
         if self.destination_topic in message.topic:

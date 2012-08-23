@@ -4,8 +4,8 @@
 %define modname busmon
 
 Name:           busmon
-Version:        0.2.5
-Release:        4%{?dist}
+Version:        0.3.0
+Release:        1%{?dist}
 Summary:        A webapp for visualizing the Fedora Message Bus
 
 License:        LGPLv2
@@ -42,7 +42,7 @@ BuildRequires:  python-docutils
 BuildRequires:  python-bunch
 BuildRequires:  python-fedora
 BuildRequires:  python-fedora-turbogears2
-BuildRequires:  fedmsg >= 0.1.5
+BuildRequires:  fedmsg >= 0.3.0
 %if %{?rhel}%{!?rhel:0} <= 6
 BuildRequires:  python-ordereddict
 %endif
@@ -65,7 +65,7 @@ Requires:       python-repoze-what-plugins-sql
 Requires:       python-kitchen
 Requires:       pycurl
 Requires:       python-tw2-d3
-Requires:       fedmsg >= 0.1.5
+Requires:       fedmsg >= 0.3.0
 %if %{?rhel}%{!?rhel:0} <= 6
 Requires:       python-ordereddict
 %endif
@@ -116,6 +116,9 @@ rm -fr %{buildroot}%{python_sitelib}/migration
 %{_datadir}/%{name}/public/toscawidgets/resources/tw2.jqplugins.gritter/static/jquery/gritter/js/jquery.gritter.min.js
 
 %changelog
+* Wed Aug 22 2012 Ralph Bean <rbean@redhat.com> - 0.3.0-1
+- Bugfix updates now that we can see it in stg.
+
 * Wed Jul 18 2012 Ralph Bean <rbean@redhat.com> - 0.2.5-4
 - Bugfix to archiving moksha resources.
 

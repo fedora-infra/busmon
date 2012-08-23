@@ -1,16 +1,29 @@
 import pygments.lexers
 import pygments.formatters
-from moksha.api.hub import Consumer
+from fedmsg.consumers import FedmsgConsumer
 
 import fedmsg
 import fedmsg.encoding
 
+# TODO - Is there an equivalent thing in kitchen?
+from paste.deploy.converters import asbool
 
-class MessageColorizer(Consumer):
-    app = "busmon"
+import logging
+log = logging.getLogger("moksha.hub")
+
+
+class MessageColorizer(FedmsgConsumer):
     topic = "*"
     destination_topic = "colorized-messages"
     jsonify = False
+
+    def __init__(self, hub):
+        ENABLED = 'busmon.consumers.enabled'
+        if not asbool(hub.config.get(ENABLED, False)):
+            log.info('busmon.consumers:MessageColorizer disabled.')
+            return
+
+        super(MessageColorizer, self).__init__(hub)
 
     def consume(self, message):
         if self.destination_topic in message.topic:

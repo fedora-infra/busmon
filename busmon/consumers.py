@@ -3,7 +3,7 @@ import pygments.formatters
 from moksha.api.hub import Consumer
 
 import fedmsg
-import fedmsg.json
+import fedmsg.encoding
 
 
 class MessageColorizer(Consumer):
@@ -18,7 +18,7 @@ class MessageColorizer(Consumer):
 
         html_args = {'full': False}
         code = pygments.highlight(
-            fedmsg.json.pretty_dumps(fedmsg.json.loads(message.body)),
+            fedmsg.encoding.pretty_dumps(fedmsg.encoding.loads(message.body)),
             pygments.lexers.JavascriptLexer(),
             pygments.formatters.HtmlFormatter(**html_args)
         )

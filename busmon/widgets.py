@@ -25,7 +25,9 @@ class TopicsBarChart(tw2.d3.BarChart, BusmonWidget):
     id = 'topics-bar-chart'
     topic = "*"  # zmq_strict = False :D
     onmessage = """busmon.filter(function() {
-        tw2.d3.util.bump_value('${id}', json['topic'], 1);
+        if (! json['topic']) { return; }
+        topic = json['topic'].split('.').slice(3).join('.')
+        tw2.d3.util.bump_value('${id}', topic, 1);
     }, json)"""
 
     data = OrderedDict()  # empty
@@ -67,8 +69,10 @@ class ColorizedMessagesWidget(BusmonWidget):
     resources = BusmonWidget.resources + [twc.CSSLink(link="css/monokai.css")]
     css_class = "hll"
 
-    # TODO -- the 'dev' in this topic should be configurable
-    topic = 'org.fedoraproject.dev.busmon.colorized-messages'
+    topic = 'org.fedoraproject.{env}.busmon.colorized-messages'.format(
+        env=tg.config.get("fedmsg.environment")
+    )
+
     onmessage = """busmon.filter_content(function() {
         var container = $('#${id}');
         if ( container.children().size() > 4 ) {

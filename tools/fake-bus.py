@@ -20,11 +20,12 @@ def main():
 
     # Probabilities of us emitting an event on each topic.
     probs = {
-        'bodhi': 0.35,
-        'fedoratagger': 0.2,
-        'pkgdb': 0.1,
-        'fas': 0.2,
-        'mediawiki': 0.3,
+        'bodhi': 0.015,
+        'fedoratagger': 0.001,
+        'pkgdb': 0.001,
+        'fas': 0.005,
+        'mediawiki': 0.01,
+        'git': 0.01,
     }
 
     # Main loop

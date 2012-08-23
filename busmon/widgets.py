@@ -41,7 +41,7 @@ class TopicsBarChart(tw2.d3.BarChart, BusmonWidget):
         super(TopicsBarChart, self).prepare()
         self.add_call(twc.js_function('tw2.d3.bar.schedule_halflife')(
             self.attrs['id'],
-            2000,
+            60000,  # Halflife of one minute.
             1000,
             0.001,
         ))

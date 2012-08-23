@@ -30,7 +30,7 @@ install_requires=[
     "Mako",
     "repoze.tm2 == 1.0a4",
     "tw2.d3>=0.0.5",
-    "fedmsg>=0.3.0",
+    "fedmsg>=0.3.7",
     "moksha>=0.7.0a1",
     "tg.devtools",
     ]
@@ -46,7 +46,7 @@ if sys.version_info[0] == 2 and sys.version_info[1] <= 6:
 
 setup(
     name='busmon',
-    version='0.3.0',
+    version='0.3.1',
     description='A webapp for visualizing activity on the Fedora Message Bus.',
     author='Ralph Bean',
     author_email='rbean@redhat.com',

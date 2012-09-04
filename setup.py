@@ -31,7 +31,8 @@ install_requires=[
     "repoze.tm2 == 1.0a4",
     "tw2.d3>=0.0.5",
     "fedmsg>=0.3.7",
-    "moksha>=0.7.0a1",
+    "moksha.wsgi",
+    "moksha.hub",
     "tg.devtools",
     ]
 

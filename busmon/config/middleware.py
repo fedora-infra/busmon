@@ -5,7 +5,7 @@ import tg
 from busmon.config.app_cfg import base_config
 from busmon.config.environment import load_environment
 
-from moksha.middleware import make_moksha_middleware
+from moksha.wsgi.middleware import make_moksha_middleware
 from tw2.core import make_middleware as make_tw2_middleware
 
 __all__ = ['make_app']

@@ -46,6 +46,8 @@ BuildRequires:  fedmsg >= 0.3.7
 %if %{?rhel}%{!?rhel:0} <= 6
 BuildRequires:  python-ordereddict
 %endif
+BuildRequires:  python-moksha-wsgi
+BuildRequires:  python-moksha-hub
 
 Requires:       TurboGears2
 Requires:       python-mako
@@ -69,7 +71,8 @@ Requires:       fedmsg >= 0.3.7
 %if %{?rhel}%{!?rhel:0} <= 6
 Requires:       python-ordereddict
 %endif
-
+Requires:       python-moksha-wsgi
+Requires:       python-moksha-hub
 
 %description
 A webapp for visualizing the Fedora Message Bus

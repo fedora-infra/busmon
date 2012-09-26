@@ -5,7 +5,7 @@ try:
 except ImportError:
     from ordereddict import OrderedDict
 
-import moksha.api.widgets.live
+import moksha.wsgi.widgets.api.live
 
 import tw2.core as twc
 import tw2.d3
@@ -14,7 +14,7 @@ from tw2.jquery import jquery_js
 global_width = 485
 
 
-class BusmonWidget(moksha.api.widgets.live.LiveWidget):
+class BusmonWidget(moksha.wsgi.widgets.api.live.LiveWidget):
     resources = [
         twc.JSLink(link="javascript/busmon.js", resources=[jquery_js]),
     ]

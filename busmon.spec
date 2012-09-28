@@ -4,8 +4,8 @@
 %define modname busmon
 
 Name:           busmon
-Version:        0.3.2
-Release:        5%{?dist}
+Version:        0.3.3
+Release:        1%{?dist}
 Summary:        A webapp for visualizing the Fedora Message Bus
 
 License:        LGPLv2
@@ -116,6 +116,9 @@ rm -fr %{buildroot}%{python_sitelib}/migration
 %{_datadir}/%{name}/public/toscawidgets/resources/tw2.jqplugins.gritter/static/jquery/gritter/js/jquery.gritter.min.js
 
 %changelog
+* Fri Sep 28 2012 Ralph Bean <rbean@redhat.com> - 0.3.3-1
+- Include README.rst.
+
 * Fri Sep 28 2012 Ralph Bean <rbean@redhat.com> - 0.3.2-5
 - Rely on python-moksha-wsgi >= 1.0.5
 - Removed BR on sql plugin and docutils.

@@ -9,10 +9,11 @@ test data.
 
 import random
 import time
-import simplejson
 
 import fedmsg
 
+# Clearly,
+FACTOR = 100
 
 def main():
     # Prepare our context and publisher
@@ -20,12 +21,12 @@ def main():
 
     # Probabilities of us emitting an event on each topic.
     probs = {
-        'bodhi': 0.015,
-        'fedoratagger': 0.001,
-        'pkgdb': 0.001,
-        'fas': 0.005,
-        'mediawiki': 0.01,
-        'git': 0.01,
+        'bodhi': 0.015 * FACTOR,
+        'fedoratagger': 0.001 * FACTOR,
+        'pkgdb': 0.001 * FACTOR,
+        'fas': 0.005 * FACTOR,
+        'mediawiki': 0.01 * FACTOR,
+        'git': 0.01 * FACTOR,
     }
 
     # Main loop

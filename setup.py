@@ -49,7 +49,7 @@ if sys.version_info[0] == 2 and sys.version_info[1] <= 6:
 
 setup(
     name='busmon',
-    version='0.3.3',
+    version='0.4.0',
     description='A webapp for visualizing activity on the Fedora Message Bus.',
     author='Ralph Bean',
     author_email='rbean@redhat.com',

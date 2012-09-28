@@ -4,7 +4,7 @@
 %define modname busmon
 
 Name:           busmon
-Version:        0.3.1
+Version:        0.3.3
 Release:        1%{?dist}
 Summary:        A webapp for visualizing the Fedora Message Bus
 
@@ -34,19 +34,17 @@ BuildRequires:  python-repoze-what
 BuildRequires:  python-repoze-who-friendlyform
 BuildRequires:  python-repoze-what-pylons
 BuildRequires:  python-repoze-who
-BuildRequires:  python-repoze-what-plugins-sql
 BuildRequires:  python-kitchen
 BuildRequires:  pycurl
 BuildRequires:  python-tw2-d3
-BuildRequires:  python-docutils
 BuildRequires:  python-bunch
 BuildRequires:  python-fedora
 BuildRequires:  python-fedora-turbogears2
-BuildRequires:  fedmsg >= 0.3.7
+BuildRequires:  fedmsg >= 0.5.0
 %if %{?rhel}%{!?rhel:0} <= 6
 BuildRequires:  python-ordereddict
 %endif
-BuildRequires:  python-moksha-wsgi
+BuildRequires:  python-moksha-wsgi >= 1.0.5
 BuildRequires:  python-moksha-hub
 
 Requires:       TurboGears2
@@ -62,16 +60,15 @@ Requires:       python-repoze-what
 Requires:       python-repoze-who-friendlyform
 Requires:       python-repoze-what-pylons
 Requires:       python-repoze-who
-#Requires:       python-repoze-what-quickstart
 Requires:       python-repoze-what-plugins-sql
 Requires:       python-kitchen
 Requires:       pycurl
 Requires:       python-tw2-d3
-Requires:       fedmsg >= 0.3.7
+Requires:       fedmsg >= 0.5.0
 %if %{?rhel}%{!?rhel:0} <= 6
 Requires:       python-ordereddict
 %endif
-Requires:       python-moksha-wsgi
+Requires:       python-moksha-wsgi >= 1.0.5
 Requires:       python-moksha-hub
 
 %description
@@ -115,10 +112,30 @@ rm -fr %{buildroot}%{python_sitelib}/migration
 
 %{_datadir}/%{name}/
 # Just for verification's sake.
-%{_datadir}/%{name}/public/toscawidgets/resources/moksha.widgets.moksha_js/static/moksha.js
+%{_datadir}/%{name}/public/toscawidgets/resources/moksha.wsgi.widgets.moksha_js/static/moksha.js
 %{_datadir}/%{name}/public/toscawidgets/resources/tw2.jqplugins.gritter/static/jquery/gritter/js/jquery.gritter.min.js
 
 %changelog
+* Fri Sep 28 2012 Ralph Bean <rbean@redhat.com> - 0.3.3-1
+- Include README.rst.
+
+* Fri Sep 28 2012 Ralph Bean <rbean@redhat.com> - 0.3.2-5
+- Rely on python-moksha-wsgi >= 1.0.5
+- Removed BR on sql plugin and docutils.
+
+* Fri Sep 28 2012 Ralph Bean <rbean@redhat.com> - 0.3.2-4
+- Reenabled the file check for moksha.js.  Frustrating.
+
+* Thu Sep 27 2012 Ralph Bean <rbean@redhat.com> - 0.3.2-3
+- Commented out the extra file check for moksha.js.  Frustrating.
+
+* Wed Sep 26 2012 Ralph Bean <rbean@redhat.com> - 0.3.2-2
+- Depend on the latest fedmsg.
+
+* Wed Sep 26 2012 Ralph Bean <rbean@redhat.com> - 0.3.2-1
+- Depend on the latest moksha.
+- Updated location of moksha.wsgi.widgets.moksha_js.
+
 * Thu Aug 23 2012 Ralph Bean <rbean@redhat.com> - 0.3.1-1
 - Modernize consumer setup.
 

@@ -5,7 +5,7 @@
 
 Name:           busmon
 Version:        0.3.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A webapp for visualizing the Fedora Message Bus
 
 License:        LGPLv2
@@ -96,13 +96,22 @@ mv setup.py.tmp setup.py
 %{__python} setup.py install -O1 --skip-build \
     --install-data=%{_datadir} --root=%{buildroot}
 
-%{__mkdir_p} %{buildroot}%{_datadir}/%{name}/public/toscawidgets
-%{__python} setup.py archive_tw2_resources -f -o %{buildroot}%{_datadir}/%{name}/public/toscawidgets -d busmon
-
 rm -fr %{buildroot}%{python_sitelib}/migration
 
 %{__mkdir_p} %{buildroot}%{_datadir}/%{name}/apache
 %{__install} apache/%{modname}.wsgi %{buildroot}%{_datadir}/%{name}/apache/%{modname}.wsgi
+
+
+%{__mkdir_p} %{buildroot}%{_datadir}/%{name}/public/toscawidgets
+%{__python} setup.py archive_tw2_resources -f -o %{buildroot}%{_datadir}/%{name}/public/toscawidgets -d busmon
+
+# These next three lines are a temporary hack.
+# The above archive_tw2_resources line SHOULD copy over moksha.js, but for some
+# reason, its not happening during the rpm build process (it does work when you
+# run it by hand).  So, to workaround, we just copy the file we need directly
+# from the python-moksha-wsgi install.
+mkdir -p %{buildroot}%{_datadir}/%{name}/public/toscawidgets/resources/moksha.wsgi.widgets.moksha_js/static
+cp %{python_sitelib}/moksha/wsgi/widgets/static/* %{buildroot}%{_datadir}/%{name}/public/toscawidgets/resources/moksha.wsgi.widgets.moksha_js/static/.
 
 
 %files
@@ -116,6 +125,10 @@ rm -fr %{buildroot}%{python_sitelib}/migration
 %{_datadir}/%{name}/public/toscawidgets/resources/tw2.jqplugins.gritter/static/jquery/gritter/js/jquery.gritter.min.js
 
 %changelog
+* Fri Sep 28 2012 Ralph Bean <rbean@redhat.com> - 0.3.3-2
+- Try to workaround broken archive_tw2_resources by copying moksha.js into the
+  archive manually.
+
 * Fri Sep 28 2012 Ralph Bean <rbean@redhat.com> - 0.3.3-1
 - Include README.rst.
 

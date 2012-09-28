@@ -30,9 +30,7 @@ install_requires=[
     "Mako",
     "repoze.tm2 == 1.0a4",
     "tw2.d3>=0.0.5",
-    "fedmsg>=0.3.7",
     "moksha.wsgi",
-    "moksha.hub",
     "tg.devtools",
     "tw2.core <= 2.1.1",        # 2.1.2 is busted
     "tw2.forms <= 2.1.1",       # 2.1.2 is busted

@@ -4,8 +4,8 @@
 %define modname busmon
 
 Name:           busmon
-Version:        0.3.3
-Release:        2%{?dist}
+Version:        0.4.0
+Release:        1%{?dist}
 Summary:        A webapp for visualizing the Fedora Message Bus
 
 License:        LGPLv2
@@ -40,12 +40,10 @@ BuildRequires:  python-tw2-d3
 BuildRequires:  python-bunch
 BuildRequires:  python-fedora
 BuildRequires:  python-fedora-turbogears2
-BuildRequires:  fedmsg >= 0.5.0
 %if %{?rhel}%{!?rhel:0} <= 6
 BuildRequires:  python-ordereddict
 %endif
 BuildRequires:  python-moksha-wsgi >= 1.0.5
-BuildRequires:  python-moksha-hub
 
 Requires:       TurboGears2
 Requires:       python-mako
@@ -64,12 +62,10 @@ Requires:       python-repoze-what-plugins-sql
 Requires:       python-kitchen
 Requires:       pycurl
 Requires:       python-tw2-d3
-Requires:       fedmsg >= 0.5.0
 %if %{?rhel}%{!?rhel:0} <= 6
 Requires:       python-ordereddict
 %endif
 Requires:       python-moksha-wsgi >= 1.0.5
-Requires:       python-moksha-hub
 
 %description
 A webapp for visualizing the Fedora Message Bus
@@ -125,6 +121,9 @@ cp %{python_sitelib}/moksha/wsgi/widgets/static/* %{buildroot}%{_datadir}/%{name
 %{_datadir}/%{name}/public/toscawidgets/resources/tw2.jqplugins.gritter/static/jquery/gritter/js/jquery.gritter.min.js
 
 %changelog
+* Fri Sep 28 2012 Ralph Bean <rbean@redhat.com> - 0.4.0-1
+- Forked consumer out to busmon-consumers package.
+
 * Fri Sep 28 2012 Ralph Bean <rbean@redhat.com> - 0.3.3-2
 - Try to workaround broken archive_tw2_resources by copying moksha.js into the
   archive manually.

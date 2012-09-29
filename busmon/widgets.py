@@ -61,6 +61,7 @@ class MessagesTimeSeries(tw2.d3.TimeSeriesChart, BusmonWidget):
     n = 200
     # Initialize to n zeros
     data = [0] * n
+    duration = 1500
 
 
 class ColorizedMessagesWidget(BusmonWidget):

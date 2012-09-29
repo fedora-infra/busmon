@@ -26,7 +26,8 @@ class MessageColorizer(FedmsgConsumer):
 
         code = code.strip()
 
-        fedmsg.send_message(
+        fedmsg.publish(
             topic=destination_topic,
             msg=code,
+            modname="busmon",
         )

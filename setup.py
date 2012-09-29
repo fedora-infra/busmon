@@ -24,7 +24,7 @@ testpkgs=['WebTest >= 1.2.3',
                ]
 install_requires=[
     "Pylons<=1.0",
-    "WebOb==1.0.8",
+    "WebOb<=1.1.1",
     "TurboGears2",
     "PasteDeploy",
     "Mako",

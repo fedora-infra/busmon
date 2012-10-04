@@ -4,7 +4,7 @@
 %define modname busmon
 
 Name:           busmon
-Version:        0.4.0
+Version:        0.4.1
 Release:        1%{?dist}
 Summary:        A webapp for visualizing the Fedora Message Bus
 
@@ -121,6 +121,9 @@ cp %{python_sitelib}/moksha/wsgi/widgets/static/* %{buildroot}%{_datadir}/%{name
 %{_datadir}/%{name}/public/toscawidgets/resources/tw2.jqplugins.gritter/static/jquery/gritter/js/jquery.gritter.min.js
 
 %changelog
+* Thu Oct 04 2012 Ralph Bean <rbean@redhat.com> - 0.4.1-1
+- Bump for bugfixes.
+
 * Fri Sep 28 2012 Ralph Bean <rbean@redhat.com> - 0.4.0-1
 - Forked consumer out to busmon-consumers package.
 

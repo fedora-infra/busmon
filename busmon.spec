@@ -4,7 +4,7 @@
 %define modname busmon
 
 Name:           busmon
-Version:        0.4.2
+Version:        0.4.3
 Release:        1%{?dist}
 Summary:        A webapp for visualizing the Fedora Message Bus
 
@@ -123,6 +123,9 @@ cp %{python_sitelib}/moksha/wsgi/widgets/static/* %{buildroot}%{_datadir}/%{name
 %{_datadir}/%{name}/public/toscawidgets/resources/tw2.jqplugins.gritter/static/jquery/gritter/js/jquery.gritter.min.js
 
 %changelog
+* Fri Oct 05 2012 Ralph Bean <rbean@redhat.com> - 0.4.3-1
+- Bugfix to memcached support.
+
 * Fri Oct 05 2012 Ralph Bean <rbean@redhat.com> - 0.4.2-1
 - Memcached support.
 

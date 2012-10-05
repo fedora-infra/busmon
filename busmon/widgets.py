@@ -28,7 +28,7 @@ class TopicsBarChart(tw2.d3.BarChart, BusmonWidget):
     topic = "*"  # zmq_strict = False :D
     onmessage = """busmon.filter(function() {
         if (! json['topic']) { return; }
-        topic = json['topic'].split('.').slice(3).join('.')
+        topic = json['topic'].split('.').slice(3, 5).join('.')
         tw2.d3.util.bump_value('${id}', topic, 1);
     }, json)"""
 

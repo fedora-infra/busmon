@@ -61,5 +61,10 @@ class MemcachedStuffer(FedmsgConsumer):
         head = int(time.time() * 1000 / duration) % n
         key = "busmon_count_%i" % head
 
-        if not self.mc.incr(key):
+        # This try-except block is here to support both old and new versions of
+        # python-memcached.
+        try:
+            if not self.mc.incr(key):
+                raise ValueError("Not Found")
+        except ValueError:
             self.mc.set(key, 1, time=duration / 1000.0 * n)

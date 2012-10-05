@@ -4,7 +4,7 @@
 %define modname busmon
 
 Name:           busmon
-Version:        0.4.1
+Version:        0.4.2
 Release:        1%{?dist}
 Summary:        A webapp for visualizing the Fedora Message Bus
 
@@ -44,6 +44,7 @@ BuildRequires:  python-fedora-turbogears2
 BuildRequires:  python-ordereddict
 %endif
 BuildRequires:  python-moksha-wsgi >= 1.0.5
+BuildRequires:  python-memcached
 
 Requires:       TurboGears2
 Requires:       python-mako
@@ -66,6 +67,7 @@ Requires:       python-tw2-d3
 Requires:       python-ordereddict
 %endif
 Requires:       python-moksha-wsgi >= 1.0.5
+Requires:       python-memcached
 
 %description
 A webapp for visualizing the Fedora Message Bus
@@ -121,6 +123,9 @@ cp %{python_sitelib}/moksha/wsgi/widgets/static/* %{buildroot}%{_datadir}/%{name
 %{_datadir}/%{name}/public/toscawidgets/resources/tw2.jqplugins.gritter/static/jquery/gritter/js/jquery.gritter.min.js
 
 %changelog
+* Fri Oct 05 2012 Ralph Bean <rbean@redhat.com> - 0.4.2-1
+- Memcached support.
+
 * Thu Oct 04 2012 Ralph Bean <rbean@redhat.com> - 0.4.1-1
 - Bump for bugfixes.
 

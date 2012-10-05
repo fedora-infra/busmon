@@ -23,6 +23,6 @@ class RootController(BaseController):
         """Handle the front-page."""
         return dict(
             barchart=TopicsBarChart,
-            timeseries=MessagesTimeSeries,
+            timeseries=MessagesTimeSeries(id='messages-time-series'),
             colorized_messages=ColorizedMessagesWidget,
         )

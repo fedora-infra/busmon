@@ -15,12 +15,10 @@ BuildArch:      noarch
 
 BuildRequires:  python-devel
 BuildRequires:  python-setuptools-devel
-BuildRequires:  python-pygments
 BuildRequires:  fedmsg >= 0.5.0
 BuildRequires:  python-paste-script
 BuildRequires:  python-memcached
 
-Requires:  python-pygments
 Requires:  fedmsg >= 0.5.0
 Requires:  python-paste-script
 Requires:  python-memcached

@@ -78,21 +78,23 @@ class MessagesTimeSeries(tw2.d3.TimeSeriesChart, BusmonWidget):
 class ColorizedMessagesWidget(BusmonWidget):
     id = 'colorized-messages'
     template = "mako:busmon.templates.colorized_messages"
-    resources = BusmonWidget.resources + [twc.CSSLink(link="css/monokai.css")]
+    resources = BusmonWidget.resources + [
+        twc.CSSLink(link="css/monokai.css"),
+        twc.JSLink(link="javascript/markup.js"),
+    ]
     css_class = "hll"
 
-    topic = 'org.fedoraproject.{env}.busmon.colorized-messages'.format(
-        env=tg.config.get("fedmsg.environment")
-    )
+    topic = "*"
 
-    onmessage = """busmon.filter_content(function() {
+    onmessage = """
+    busmon.filter(function() {
         var container = $('#${id}');
         if ( container.children().size() > 4 ) {
             container.children().first().slideUp(100, function () {
                 $(this).remove();
-                container.append(json.msg);
+                container.append(markup(json));
             });
         } else {
-            container.append(json.msg);
+            container.append(markup(json));
         }
     }, json)"""

@@ -77,9 +77,6 @@ setup(
         'paste.app_install': (
             'main = pylons.util:PylonsInstaller',
         ),
-        'moksha.consumer': (
-            'colorizer = busmon.consumers:MessageColorizer',
-        ),
         'moksha.widget': (
             'topics_bar = busmon.widgets:TopicsBarChart',
             'messages_series = busmon.widgets:MessagesTimeSeries',

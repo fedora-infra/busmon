@@ -1,5 +1,7 @@
 
 import tg
+import time
+import memcache
 try:
     from collections import OrderedDict
 except ImportError:
@@ -48,7 +50,6 @@ class TopicsBarChart(tw2.d3.BarChart, BusmonWidget):
 
 
 class MessagesTimeSeries(tw2.d3.TimeSeriesChart, BusmonWidget):
-    id = 'messages-time-series'
     topic = "*"
     onmessage = """busmon.filter(function() {
         tw2.store['${id}'].value++;
@@ -57,11 +58,21 @@ class MessagesTimeSeries(tw2.d3.TimeSeriesChart, BusmonWidget):
     width = global_width
     height = 150
 
-    # Keep this many data points
-    n = 200
-    # Initialize to n zeros
-    data = [0] * n
-    duration = 1500
+    def prepare(self):
+        self.n = int(tg.config.get("busmon.memcached.n"))
+        self.duration = int(tg.config.get("busmon.memcached.duration"))
+
+        head = int(time.time() * 1000 / self.duration) % self.n
+
+        indices = range(self.n)
+        indices = indices[head:] + indices[:head]
+        keys = ["busmon_count_%i" % i for i in indices]
+
+        servers = tg.config.get("busmon.memcached.servers").split(',')
+        mc = memcache.Client(servers)
+        self.data = map(lambda key: mc.get(key) or 0, keys)
+
+        super(MessagesTimeSeries, self).prepare()
 
 
 class ColorizedMessagesWidget(BusmonWidget):

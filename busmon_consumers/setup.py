@@ -15,6 +15,7 @@ testpkgs=[
 install_requires=[
     "fedmsg>=0.5.0",
     "pygments",
+    "python-memcached",
 ]
 
 
@@ -36,6 +37,7 @@ setup(
     entry_points={
         'moksha.consumer': (
             'colorizer = busmon_consumers.consumers:MessageColorizer',
+            'memcached = busmon_consumers.consumers:MemcachedStuffer',
         ),
     },
     zip_safe=False

@@ -34,6 +34,7 @@ install_requires=[
     "tg.devtools",
     "tw2.core <= 2.1.1",        # 2.1.2 is busted
     "tw2.forms <= 2.1.1",       # 2.1.2 is busted
+    "python-memcached",
     ]
 
 if sys.version_info[:2] == (2,4):

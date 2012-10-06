@@ -32,8 +32,8 @@ install_requires=[
     "tw2.d3>=0.0.5",
     "moksha.wsgi",
     "tg.devtools",
-    "tw2.core <= 2.1.1",        # 2.1.2 is busted
-    "tw2.forms <= 2.1.1",       # 2.1.2 is busted
+    "tw2.core",
+    "tw2.forms",
     "python-memcached",
     ]
 

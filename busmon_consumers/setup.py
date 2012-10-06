@@ -14,14 +14,13 @@ testpkgs=[
 
 install_requires=[
     "fedmsg>=0.5.0",
-    "pygments",
     "python-memcached",
 ]
 
 
 setup(
     name='busmon_consumers',
-    version='0.4.3',
+    version='0.4.5',
     description='fedmsg-hub consumers for the busmon webapp',
     author='Ralph Bean',
     author_email='rbean@redhat.com',
@@ -36,7 +35,6 @@ setup(
     tests_require=testpkgs,
     entry_points={
         'moksha.consumer': (
-            'colorizer = busmon_consumers.consumers:MessageColorizer',
             'memcached = busmon_consumers.consumers:MemcachedStuffer',
         ),
     },

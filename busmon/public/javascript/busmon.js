@@ -16,12 +16,6 @@ $.extend(busmon, {
         }
     },
 
-    // A special version of busmon.filter() that checks the message body instead
-    // of the topic.  Used by the ColorizedMessages widget.
-    filter_content: function(callback, json) {
-        if ( busmon.regex.test(json.msg) ) { callback(); }
-    },
-
     apply_new_regex: function(value) {
         // Take in the new value.  This will affect all callbacks passed
         // through busmon.filter(callback, json);

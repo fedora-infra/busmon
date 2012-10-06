@@ -48,7 +48,7 @@ if sys.version_info[0] == 2 and sys.version_info[1] <= 6:
 
 setup(
     name='busmon',
-    version='0.4.3',
+    version='0.4.5',
     description='A webapp for visualizing activity on the Fedora Message Bus.',
     author='Ralph Bean',
     author_email='rbean@redhat.com',
@@ -76,9 +76,6 @@ setup(
         ),
         'paste.app_install': (
             'main = pylons.util:PylonsInstaller',
-        ),
-        'moksha.consumer': (
-            'colorizer = busmon.consumers:MessageColorizer',
         ),
         'moksha.widget': (
             'topics_bar = busmon.widgets:TopicsBarChart',

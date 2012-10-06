@@ -4,7 +4,7 @@
 %define modname busmon_consumers
 
 Name:           busmon-consumers
-Version:        0.4.3
+Version:        0.4.5
 Release:        1%{?dist}
 Summary:        fedmsg-hub consumers for the busmon webapp
 
@@ -15,12 +15,10 @@ BuildArch:      noarch
 
 BuildRequires:  python-devel
 BuildRequires:  python-setuptools-devel
-BuildRequires:  python-pygments
 BuildRequires:  fedmsg >= 0.5.0
 BuildRequires:  python-paste-script
 BuildRequires:  python-memcached
 
-Requires:  python-pygments
 Requires:  fedmsg >= 0.5.0
 Requires:  python-paste-script
 Requires:  python-memcached
@@ -43,6 +41,9 @@ fedmsg-hub consumers for the busmon webapp
 %{python_sitelib}/%{modname}-%{version}*
 
 %changelog
+* Fri Oct 05 2012 Ralph Bean <rbean@redhat.com> - 0.4.5-1
+- Death to the MessageColorizer consumer.
+
 * Fri Oct 05 2012 Ralph Bean <rbean@redhat.com> - 0.4.3-1
 - Bugfix to memcached support.
 

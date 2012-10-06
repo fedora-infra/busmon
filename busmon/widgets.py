@@ -92,9 +92,9 @@ class ColorizedMessagesWidget(BusmonWidget):
         if ( container.children().size() > 4 ) {
             container.children().first().slideUp(100, function () {
                 $(this).remove();
-                container.append(markup(json));
+                container.append("<pre>"+markup(json)+"</pre>");
             });
         } else {
-            container.append(markup(json));
+            container.append("<pre>"+markup(json)+"</pre>");
         }
     }, json)"""

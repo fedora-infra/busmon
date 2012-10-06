@@ -20,7 +20,7 @@ install_requires=[
 
 setup(
     name='busmon_consumers',
-    version='0.4.3',
+    version='0.4.5',
     description='fedmsg-hub consumers for the busmon webapp',
     author='Ralph Bean',
     author_email='rbean@redhat.com',

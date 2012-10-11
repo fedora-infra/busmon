@@ -32,8 +32,8 @@ install_requires=[
     "tw2.d3>=0.0.5",
     "moksha.wsgi",
     "tg.devtools",
-    "tw2.core <= 2.1.1",        # 2.1.2 is busted
-    "tw2.forms <= 2.1.1",       # 2.1.2 is busted
+    "tw2.core",
+    "tw2.forms",
     "python-memcached",
     ]
 
@@ -48,7 +48,7 @@ if sys.version_info[0] == 2 and sys.version_info[1] <= 6:
 
 setup(
     name='busmon',
-    version='0.4.5',
+    version='0.4.6',
     description='A webapp for visualizing activity on the Fedora Message Bus.',
     author='Ralph Bean',
     author_email='rbean@redhat.com',

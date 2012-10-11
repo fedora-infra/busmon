@@ -26,3 +26,8 @@ class RootController(BaseController):
             timeseries=MessagesTimeSeries(id='messages-time-series'),
             colorized_messages=ColorizedMessagesWidget,
         )
+
+    @expose('')
+    def _heartbeat(self):
+        """ A nice lightweight url for our proxies to check. """
+        return "I am ok.  Thanks for asking."

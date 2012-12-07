@@ -9,15 +9,19 @@ test data.
 
 import random
 import time
+import socket
 
 import fedmsg
 
 # Clearly,
 FACTOR = 100
 
+hostname = socket.gethostname()
+
+
 def main():
     # Prepare our context and publisher
-    fedmsg.init(name="bodhi.marat")
+    fedmsg.init(name="bodhi.%s" % hostname)
 
     # Probabilities of us emitting an event on each topic.
     probs = {

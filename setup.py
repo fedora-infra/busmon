@@ -23,18 +23,19 @@ testpkgs=['WebTest >= 1.2.3',
                'repoze.who-testutil >= 1.0.1',
                ]
 install_requires=[
-    "Pylons<=1.0",
-    "WebOb<=1.1.1",
-    "TurboGears2",
+    "TurboGears2<2.1.5",
     "PasteDeploy",
     "Mako",
     "repoze.tm2 == 1.0a4",
     "tw2.d3>=0.0.5",
     "moksha.wsgi",
-    "tg.devtools",
+    "tg.devtools<2.1.5",
     "tw2.core",
     "tw2.forms",
     "python-memcached",
+    "WebTest<2.0",
+    "Pylons<=1.0",
+    "WebOb<=1.1.1",
     ]
 
 if sys.version_info[:2] == (2,4):

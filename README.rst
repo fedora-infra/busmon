@@ -13,6 +13,12 @@ Get the source for busmon::
     $ git clone git://github.com/ralphbean/busmon.git
     $ cd busmon
 
+Busmon needs memcached around to keep a little round-robin database of the
+last five minutes::
+
+    $ sudo yum -y memcached start
+    $ sudo systemctl memcached.service start
+
 Install `virtualenvwrapper <http://pypi.python.org/pypi/virtualenvwrapper>`_ and
 use it to create a virtualenv.  In that virtualenv, install all of busmon's
 dependencies::

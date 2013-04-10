@@ -22,18 +22,21 @@ function _markup(obj, depth) {
     prefix = compute_prefix(depth);
 
     $.each(obj, function(key, value) {
-        result += prefix + key + ": ";
-        if (value == null ||
-            typeof value == "string" ||
-            typeof value == "number" ||
-            typeof value == "boolean") {
-            result += handle_primitive(value);
-        } else if (value instanceof Array) {
-            result += "[" + $.map(value, handle_primitive).join(', ') + "]";
-        } else {
-            result += markup(value, depth+1)
+        // Don't add certificate and signature details to output JSON
+        if (key != "certificate" && key != "signature") {
+            result += prefix + key + ": ";
+            if (value == null ||
+                typeof value == "string" ||
+                typeof value == "number" ||
+                typeof value == "boolean") {
+                result += handle_primitive(value);
+            } else if (value instanceof Array) {
+                result += "[" + $.map(value, handle_primitive).join(', ') + "]";
+            } else {
+                result += markup(value, depth+1)
+            }
+            result += ",\n";
         }
-        result += ",\n";
     });
     return result;
 }

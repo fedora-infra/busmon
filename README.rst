@@ -16,8 +16,8 @@ Get the source for busmon::
 Busmon needs memcached around to keep a little round-robin database of the
 last five minutes::
 
-    $ sudo yum -y memcached start
-    $ sudo systemctl memcached.service start
+    $ sudo yum -y install memcached
+    $ sudo systemctl start memcached.service
 
 Install `virtualenvwrapper <http://pypi.python.org/pypi/virtualenvwrapper>`_ and
 use it to create a virtualenv.  In that virtualenv, install all of busmon's

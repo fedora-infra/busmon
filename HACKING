@@ -1,0 +1,4 @@
+At the moment, busmon2 requires that you set up your own local instance of
+'datagrepper'.  Its not too hard to do -- the README for that project should
+have instructions on how to stand it up:
+https://github.com/fedora-infra/datagrepper/

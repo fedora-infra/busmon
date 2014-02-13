@@ -1,7 +1,0 @@
-graft busmon
-graft apache
-include README.rst
-recursive-include busmon/public *
-include busmon/public/favicon.ico
-recursive-include busmon/i18n *
-recursive-include busmon/templates *
